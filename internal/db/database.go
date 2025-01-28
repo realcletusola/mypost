@@ -2,7 +2,7 @@ package db
 
 import (
 	"database/sql"
-	"fmt"
+	// "fmt"
 	"log"
 
 	_"github.com/lib/pq" // PostgreSQL driver 
@@ -20,7 +20,7 @@ func InitDB() {
 	}
 
 	// Verify the connection 
-	err := DB.Ping()
+	err = DB.Ping()
 	if err != nil {
 		log.Fatalf("Database connection failed: %v", err)
 	}
