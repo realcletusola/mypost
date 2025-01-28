@@ -1,0 +1,46 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Output of build process
+*.out
+*.a
+
+# Go modules
+/go.mod
+/go.sum
+
+# Dependency directories
+/vendor/
+
+# Go workspace files (if you're using a workspace setup)
+*.work
+
+# IDE and editor files
+.vscode/
+.idea/
+*.iml
+
+# Logs and debugging files
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Coverage files
+*.cover
+*.cov
+
+# Test binary artifacts
+*.test
+
+# Git-specific files
+!.gitignore
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
