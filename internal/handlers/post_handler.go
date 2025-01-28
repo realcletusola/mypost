@@ -60,15 +60,15 @@ func GetPosts(w http.ResponseWriter, r *http.Request) {
 
 // Create function to get each post by ID 
 func GetPostByID(w http.ResponseWriter, r *http.Request) {
-	id := chi.URLParam(r, "id")
 	go func() {
+		id := chi.URLParam(r, "id")
 		mu.Lock()
 		defer mu.Unlock()
-		post, exists := post[id]
+		post, exists := posts[id]
 		if !exists {
 			http.Error(w, "Post not found", http.StatusNotFound)
 			return
 		}
 		encodeJSONBody(w, post)
 	}()
-}
+}                  
