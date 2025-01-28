@@ -14,7 +14,7 @@ func decodeJSONBody(w http.ResponseWriter, r *http.Request, dest interface{}) er
 
 // Create function to encode Json
 func encodeJSONBody(w http.ResponseWriter, data interface{}) {
-	w.Header().set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(data); err != nil {
 		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
 	}
