@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"net/http"
 	"github.com/realcletusola/mypost/internal/models"
 	"github.com/go-chi/chi/v5"
@@ -13,7 +13,7 @@ import (
 var (
 	// simulate in-memory database 
 	posts 	   = make(map[string]*models.Post)
-	categories = make(map[string]*models.category)
+	categories = make(map[string]*models.Category)
 	mu		   sync.Mutex 
 )
 
@@ -46,7 +46,7 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 func GetPosts(w http.ResponseWriter, r *http.Request) {
 	go func() {
 		mu.Lock()
-		defer.mu.Unlock()
+		defer mu.Unlock()
 
 		// create slice to of 0 initial length and capacity of post length 
 		postList := make([]*models.Post, 0, len(posts))
@@ -60,12 +60,12 @@ func GetPosts(w http.ResponseWriter, r *http.Request) {
 
 // Create function to get each post by ID 
 func GetPostByID(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
 	go func() {
-		id := chi.URLParam(r, "id")
 		mu.Lock()
 		defer mu.Unlock()
 		post, exists := post[id]
-		if != exists {
+		if !exists {
 			http.Error(w, "Post not found", http.StatusNotFound)
 			return
 		}
